@@ -1,10 +1,10 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name - 
-//Date -
-//Class -
-//Lab  -
+//Name - Elias Dobrin
+//Date - January 20, 2022
+//Class - AP Computer Science A+ - Mr. Mauro
+//Lab  - Discount
 
 import static java.lang.System.*;
 import java.util.Scanner;
@@ -17,6 +17,15 @@ public class Discount
 	//			if the bill is >2000, the bill receives a 15% discount
 	public static double getDiscountedBill(double bill)
 	{
-		return 0;
+		if(bill > 2000)
+		{
+			double discount = 0.15 * bill;
+			return (bill - discount);
+		}
+		
+		else
+		{
+			return bill;
+		}
 	}
 }
