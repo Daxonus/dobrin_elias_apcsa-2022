@@ -1,10 +1,10 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
 
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Elias Dobrin
+//Date - January 20, 2022
+//Class - AP Computer Science A+ - Mr. Mauro
+//Lab  - MilesPerHour
 
 import java.util.Scanner; 
 import static java.lang.System.*;
@@ -30,7 +30,7 @@ public class MPHRunner
 		test.print();
 		
 		//add more test cases
-		
+		// test cases can be done by running program and entering inputs again.
 		
 	}
 }
