@@ -1,7 +1,8 @@
-//(c) A+ Computer Science
-//www.apluscompsci.com
-//Name -
-//Date -
+//© A+ Computer Science  -  www.apluscompsci.com
+//Name - Elias Dobrin
+//Date - January 20, 2022
+//Class - AP Computer Science A+ - Mr. Mauro
+//Lab  - Cube
 
 public class CubeRunner
 {
