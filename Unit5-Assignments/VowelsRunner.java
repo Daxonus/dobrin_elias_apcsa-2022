@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Elias Dobrin
+//Date - 1/24/2022
 
 public class VowelsRunner
 {
