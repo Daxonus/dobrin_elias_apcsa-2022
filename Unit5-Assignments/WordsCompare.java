@@ -15,30 +15,35 @@ public class WordsCompare
 
 	public WordsCompare()
 	{
+		
 	}
 
 	public WordsCompare(String one, String two)
 	{
+		setWords(one, two);
 	}
 
 	public void setWords(String one, String two)
 	{
-
+		wordOne = one;
+		wordTwo = two;
+		compare();
 	}
 
 	public void compare()
 	{
+		compare = wordOne.compareTo(wordTwo);
 	}
 
 	public String toString()
 	{
 		if(compare<0)
 		{
-			return wordOne + " should be placed before " + wordTwo + "\n";
+			return wordOne + " should be placed before " + wordTwo + "\n\n";
 		}
 		else
 		{
-			return wordOne + " should be placed after " + wordTwo + "\n";
+			return wordOne + " should be placed after " + wordTwo + "\n\n";
 		}
 	}
 }
