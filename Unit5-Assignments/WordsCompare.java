@@ -4,7 +4,7 @@
 //Name - Elias Dobrin
 //Date - 1/24/2022
 //Class - AP Computer Science A+ - Mr. Mauro Period 1
-//Lab  - String Odd Even
+//Lab  - Words Compare
 
 import static java.lang.System.*;
 
