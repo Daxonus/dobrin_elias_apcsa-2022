@@ -1,7 +1,7 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
-//Date -
+//Name - Elias Dobrin
+//Date - January 27, 2022
 
 public class OddToEvenRunner
 {
