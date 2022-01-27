@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 // www.apluscompsci.com
-//Name -  
+//Name - Elias Dobrin
 
 import java.util.Scanner;
 import static java.lang.System.*;
@@ -14,13 +14,24 @@ public class RPSRunner
 		
 		//add in a do while loop after you get the basics up and running
 		
-			String player = "";
-		
-			out.print("type in your prompt [R,P,S] :: ");
 			
 			//read in the player value
 		
-			RockPaperScissors game = new RockPaperScissors();		
+			RockPaperScissors game = new RockPaperScissors();
+			game.setPlayers("rock");
+			System.out.print(game + "\n");
+			
+			game.setPlayers("scissors");
+			System.out.print(game + "\n");
+			
+			game.setPlayers("paper");
+			System.out.print(game + "\n");
+			
+			game.setPlayers("paper");
+			System.out.print(game + "\n");
+			
+			game.setPlayers("rock");
+			System.out.print(game + "\n");
 	}
 }
 
