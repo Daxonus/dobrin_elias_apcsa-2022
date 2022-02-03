@@ -9,5 +9,12 @@ public class CardTester {
 	 */
 	public static void main(String[] args) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 1 *** */
+		Card card1 = new Card("J", "hearts", 10);
+		Card card2 = new Card("Q", "spades", 11);
+		Card card3 = new Card("6", "hearts", 6);
+		
+		System.out.print(card1 + "\n");
+		System.out.print(card2 + "\n");
+		System.out.print(card3 + "\n");
 	}
 }
