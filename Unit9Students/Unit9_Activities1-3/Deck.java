@@ -38,7 +38,7 @@ public class Deck {
 			for(int j = 0; j < suits.length; j++)
 			{
 				int cardIndex = (suits.length)*i + j;
-				cards[cardIndex] = new Card(ranks[cardIndex], suits[cardIndex], values[cardIndex]);
+				cards[cardIndex] = new Card(ranks[i], suits[j], values[i]);
 			}
 		}
 		
@@ -66,7 +66,7 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return size;
+		return cards.length;
 	}
 
 	/**
@@ -110,7 +110,7 @@ public class Deck {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
 		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards.get(k);
+			rtn = rtn + cards[k];
 			if (k != 0) {
 				rtn = rtn + ", ";
 			}
@@ -121,12 +121,12 @@ public class Deck {
 		}
 
 		rtn = rtn + "\nDealt cards: \n";
-		for (int k = cards.size() - 1; k >= size; k--) {
-			rtn = rtn + cards.get(k);
+		for (int k = size() - 1; k >= size; k--) {
+			rtn = rtn + cards[k];
 			if (k != size) {
 				rtn = rtn + ", ";
 			}
-			if ((k - cards.size()) % 2 == 0) {
+			if ((k - size) % 2 == 0) {
 				// Insert carriage returns so entire deck is visible on console.
 				rtn = rtn + "\n";
 			}
