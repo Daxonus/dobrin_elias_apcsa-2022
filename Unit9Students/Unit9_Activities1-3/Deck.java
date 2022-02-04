@@ -41,6 +41,8 @@ public class Deck {
 				cards[cardIndex] = new Card(ranks[cardIndex], suits[cardIndex], values[cardIndex]);
 			}
 		}
+		
+		size = cards.length;
 	}
 
 
@@ -50,6 +52,12 @@ public class Deck {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		if(size == 0)
+		{
+			return true;
+		}
+		
+		return false;
 	}
 
 	/**
@@ -58,6 +66,7 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		return size;
 	}
 
 	/**
@@ -66,6 +75,13 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
+		for(int k = 51; k >= 0; k--)
+		{
+			int r = (int) Math.round(Math.random() * k);
+			Card temp = cards[k];
+			cards[k] = cards[r];
+			cards[r] = temp;
+		}
 	}
 
 	/**
@@ -75,6 +91,14 @@ public class Deck {
 	 */
 	public Card deal() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
+		size--;
+		
+		if(size >= 0)
+		{
+			return cards[size];
+		}
+		
+		return null;
 	}
 
 	/**
