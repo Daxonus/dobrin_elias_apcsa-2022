@@ -27,7 +27,8 @@ public class DeckTester {
 		deck2.deal();
 		System.out.print(deck2);
 		System.out.print("empty: " + deck2.isEmpty() + "\n\n");
-
+		
+		
 		String[] ranks3 = {"5", "2"};
 		String[] suits3 = {"yellow", "red", "purple"};
 		int[] pointValues3 = {5, 2};
@@ -36,5 +37,8 @@ public class DeckTester {
 		System.out.print(deck3);
 		System.out.print("empty: " + deck3.isEmpty() + "\n\n");
 		
+		// shuffle test case
+		deck3.shuffle();
+		System.out.print("\n\n\n\n\n\nShuffled deck:\n\n" + deck3);
 	}
 }
