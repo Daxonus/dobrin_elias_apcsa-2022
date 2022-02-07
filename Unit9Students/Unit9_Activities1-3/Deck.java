@@ -52,12 +52,7 @@ public class Deck {
 	 */
 	public boolean isEmpty() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		if(size == 0)
-		{
-			return true;
-		}
-		
-		return false;
+		return size == 0;
 	}
 
 	/**
@@ -66,7 +61,7 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return cards.length;
+		return size;
 	}
 
 	/**
