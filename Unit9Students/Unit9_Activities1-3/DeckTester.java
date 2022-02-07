@@ -16,7 +16,7 @@ public class DeckTester {
 		deck1.deal();
 		deck1.deal();
 		System.out.print(deck1);
-		System.out.print(deck1.isEmpty());
+		System.out.print("empty: " + deck1.isEmpty() + "\n\n");
 
 		String[] ranks2 = {"jack", "3", "6"};
 		String[] suits2 = {"blue", "pink"};
@@ -26,7 +26,7 @@ public class DeckTester {
 		deck2.deal();
 		deck2.deal();
 		System.out.print(deck2);
-		System.out.print(deck2.isEmpty());
+		System.out.print("empty: " + deck2.isEmpty() + "\n\n");
 
 		String[] ranks3 = {"5", "2"};
 		String[] suits3 = {"yellow", "red", "purple"};
@@ -34,7 +34,7 @@ public class DeckTester {
 		Deck deck3 = new Deck(ranks3, suits3, pointValues3);
 		deck3.deal();
 		System.out.print(deck3);
-		System.out.print(deck3.isEmpty());
+		System.out.print("empty: " + deck3.isEmpty() + "\n\n");
 		
 	}
 }

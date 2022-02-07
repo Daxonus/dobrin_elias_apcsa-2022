@@ -42,7 +42,7 @@ public class Deck {
 			}
 		}
 		
-		size = cards.length;
+		shuffle();
 	}
 
 
@@ -61,7 +61,7 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return size;
+		return cards.length;
 	}
 
 	/**
@@ -70,13 +70,15 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		for(int k = 51; k >= 0; k--)
+		for(int n = cards.length - 1; n >= 0; n--)
 		{
-			int r = (int) Math.round(Math.random() * k);
-			Card temp = cards[k];
-			cards[k] = cards[r];
+			int r = (int) Math.round(Math.random() * n);
+			Card temp = cards[n];
+			cards[n] = cards[r];
 			cards[r] = temp;
 		}
+		
+		size = cards.length;
 	}
 
 	/**
@@ -127,7 +129,6 @@ public class Deck {
 			}
 		}
 
-		rtn = rtn + "\n";
 		return rtn;
 	}
 }
