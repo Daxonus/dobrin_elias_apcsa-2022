@@ -1,0 +1,15 @@
+Buggy1:
+Innermost method call where assertion error occurred: testEmpty()	
+Possible Code Error: Error occurred on line 96 where deck size was assumed and expected to be 0 when it turned out to be 1. One possible reason for this error is that the size method of the deck class returns the number of cards in the deck rather than the number of undealt cards given from the size parameter.
+
+Buggy2:
+Innermost method call where assertion error occurred: testEmpty()
+Possible Code Error: Error occurred on line 97 where deck size was expected to be 1 but turned out to be 1. A possible reason for this error is that the deck class returns the total number of cards in the deck rather than the number of undealt cards.
+
+Buggy3:
+Method or constructor name: None
+All assertion tests passed in this decktester run configuration.
+
+Buggy4:
+Method or constructor name: None
+All assertion tests passed in the decktester run configuration of this directory.
