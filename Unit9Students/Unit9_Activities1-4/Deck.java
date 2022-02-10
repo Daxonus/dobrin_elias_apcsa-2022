@@ -11,8 +11,8 @@ public class Deck {
 	/**
 	 * cards contains all the cards in the deck.
 	 */
-	//private List<Card> cards;
-	private Card[] cards;
+	private ArrayList<Card> cards;
+	//private Card[] cards;
 	
 	/**
 	 * size is the number of not-yet-dealt cards.
@@ -32,13 +32,16 @@ public class Deck {
 	 */
 	public Deck(String[] ranks, String[] suits, int[] values) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		cards = new Card[ranks.length * suits.length];
+		
+		cards = new ArrayList<Card>();
+		
 		for(int i = 0; i < ranks.length; i++)
 		{
 			for(int j = 0; j < suits.length; j++)
 			{
-				int cardIndex = (suits.length)*i + j;
-				cards[cardIndex] = new Card(ranks[i], suits[j], values[i]);
+				//int cardIndex = (suits.length)*i + j;
+				//cards[cardIndex] = new Card(ranks[i], suits[j], values[i]);
+				cards.add(new Card(ranks[i], suits[j], values[i]));
 			}
 		}
 		
@@ -61,7 +64,7 @@ public class Deck {
 	 */
 	public int size() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 2 *** */
-		return size;
+		return cards.size();
 	}
 
 	/**
@@ -70,15 +73,15 @@ public class Deck {
 	 */
 	public void shuffle() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 4 *** */
-		for(int n = cards.length - 1; n >= 0; n--)
+		for(int n = cards.size() - 1; n >= 0; n--)
 		{
 			int r = (int) Math.round(Math.random() * n);
-			Card temp = cards[n];
-			cards[n] = cards[r];
-			cards[r] = temp;
+			Card temp = cards.get(n);
+			cards.set(n, cards.get(r));
+			cards.set(r, temp);
 		}
 		
-		size = cards.length;
+		size = cards.size();
 	}
 
 	/**
@@ -92,7 +95,7 @@ public class Deck {
 		
 		if(size >= 0)
 		{
-			return cards[size];
+			return cards.get(size);
 		}
 		
 		return null;
@@ -107,7 +110,7 @@ public class Deck {
 		String rtn = "size = " + size + "\nUndealt cards: \n";
 
 		for (int k = size - 1; k >= 0; k--) {
-			rtn = rtn + cards[k];
+			rtn = rtn + cards.get(k);
 			if (k != 0) {
 				rtn = rtn + ", ";
 			}
@@ -119,7 +122,7 @@ public class Deck {
 
 		rtn = rtn + "\nDealt cards: \n";
 		for (int k = size() - 1; k >= size; k--) {
-			rtn = rtn + cards[k];
+			rtn = rtn + cards.get(k);
 			if (k != size) {
 				rtn = rtn + ", ";
 			}
