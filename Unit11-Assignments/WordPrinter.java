@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Elias Dobrin
 
 import static java.lang.System.*;
 
@@ -10,5 +10,9 @@ public class WordPrinter
 		
 	public static void printWord(String word, int times)
 	{
+		for(int n = 0; n < times; n++)
+		{
+			System.out.println(word);
+		}
 	}
 }
