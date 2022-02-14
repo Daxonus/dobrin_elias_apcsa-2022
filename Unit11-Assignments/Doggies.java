@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Elias Dobrin
 
 import java.util.Arrays;
 
@@ -11,23 +11,47 @@ public class Doggies
 	public Doggies(int size)
 	{
 		//point pups at a new arry of Dog
-		
+		pups = new Dog[size];
 	}
 	
 	public void set(int spot, int age, String name)
 	{
 		//put a new Dog in the array at spot 
 		//make sure spot is in bounds		
+		if(spot >= 0 && spot < pups.length)
+		{
+			pups[spot] = new Dog(age, name);
+		}
 	}
 
 	public String getNameOfOldest()
 	{
-		return null;
+		int oldestIndex = 0;
+		
+		for(int n = 1; n < pups.length; n++)
+		{
+			if(pups[n].getAge() > pups[oldestIndex].getAge())
+			{
+				oldestIndex = n;
+			}
+		}
+		
+		return pups[oldestIndex].getName();
 	}
 
 	public String getNameOfYoungest()
 	{
-		return null;
+		int youngestIndex = 0;
+		
+		for(int n = 1; n < pups.length; n++)
+		{
+			if(pups[n].getAge() < pups[youngestIndex].getAge())
+			{
+				youngestIndex = n;
+			}
+		}
+		
+		return pups[youngestIndex].getName();
 	}
 
 	public String toString()
