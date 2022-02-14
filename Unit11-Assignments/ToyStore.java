@@ -6,6 +6,7 @@ import java.util.Scanner;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import static java.lang.System.*;
 
 public class ToyStore
@@ -23,13 +24,19 @@ public class ToyStore
 		
 		for(int n = 0; n < toystrings.length; n++)
 		{
-			int count = 0;
+			if(toystrings[n].equals("hellothere"))
+			{
+				continue;
+			}
 			
-			for(int m = 0; m < toystrings.length; m++)
+			int count = 1;
+			
+			for(int m = 1; m < toystrings.length; m++)
 			{
 				if(toystrings[n].equals(toystrings[m]))
 				{
 					count++;
+					toystrings[m] = "hellothere";
 				}
 			}
 			
@@ -37,6 +44,8 @@ public class ToyStore
 			toy.setCount(count);
 			toyList.add(toy);
 		}
+		
+		
 		
 	}
   
