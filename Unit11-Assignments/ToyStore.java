@@ -11,38 +11,40 @@ import static java.lang.System.*;
 
 public class ToyStore
 {
-	private ArrayList<Toy> toyList;
+	private ArrayList<Toy> toylist;
 
 	public ToyStore()
 	{
+		toylist = new ArrayList<Toy>();
 	}
 
 	public void loadToys( String toys )
 	{
-		toyList = new ArrayList<Toy>();
+		toylist.clear();
+		HashSet<String> toyhash = new HashSet<String>();
 		String[] toystrings = toys.split(" ");
 		
 		for(int n = 0; n < toystrings.length; n++)
 		{
-			if(toystrings[n].equals("hellothere"))
-			{
-				continue;
-			}
+			toyhash.add(toystrings[n]);
+		}
+		
+		Object[] toyarray = toyhash.toArray();
+		
+		for(int n = 0; n < toyarray.length; n++)
+		{
+			Toy toy = new Toy(toyarray[n].toString());
+			toy.setCount(0);
 			
-			int count = 1;
-			
-			for(int m = 1; m < toystrings.length; m++)
+			for(int i = 0; i < toystrings.length; i++)
 			{
-				if(toystrings[n].equals(toystrings[m]))
+				if(toystrings[i].equals(toyarray[n]))
 				{
-					count++;
-					toystrings[m] = "hellothere";
+					toy.setCount(toy.getCount() + 1);
 				}
 			}
 			
-			Toy toy = new Toy(toystrings[n]);
-			toy.setCount(count);
-			toyList.add(toy);
+			toylist.add(toy);
 		}
 		
 		
@@ -51,11 +53,11 @@ public class ToyStore
   
   	public Toy getThatToy( String nm )
   	{
-  		for(int n = 0; n < toyList.size(); n++)
+  		for(int n = 0; n < toylist.size(); n++)
   		{
-  			if(toyList.get(n).getName().equals(nm))
+  			if(toylist.get(n).getName().equals(nm))
   			{
-  				return toyList.get(n);
+  				return toylist.get(n);
   			}
   		}
   		
@@ -66,15 +68,15 @@ public class ToyStore
   	{
   		int frequentIndex = 0;
   		
-  		for(int n = 1; n < toyList.size(); n++)
+  		for(int n = 1; n < toylist.size(); n++)
   		{
-  			if(toyList.get(n).getCount() > toyList.get(frequentIndex).getCount())
+  			if(toylist.get(n).getCount() > toylist.get(frequentIndex).getCount())
   			{
   				frequentIndex = n;
   			}
   		}
   		
-  		return toyList.get(frequentIndex).getName();
+  		return toylist.get(frequentIndex).getName();
   	}  
   
   	public void sortToysByCount()
@@ -83,15 +85,15 @@ public class ToyStore
   		{
   			boolean boring = true;
   			
-  			for(int n = 0; n < toyList.size() - 1; n++)
+  			for(int n = 0; n < toylist.size() - 1; n++)
   			{
-  				Toy toy1 = toyList.get(n);
-  				Toy toy2 = toyList.get(n + 1);
+  				Toy toy1 = toylist.get(n);
+  				Toy toy2 = toylist.get(n + 1);
   				
   				if(toy1.getCount() > toy2.getCount())
   				{
-  					toyList.set(n, toy2);
-  					toyList.set(n + 1, toy1);
+  					toylist.set(n, toy2);
+  					toylist.set(n + 1, toy1);
   					boring = false;
   				}
   			}
@@ -107,9 +109,9 @@ public class ToyStore
 	{
 		String text = "";
 		
-		for(int n = 0; n < toyList.size(); n++)
+		for(int n = 0; n < toylist.size(); n++)
 		{
-			text += toyList.get(n).toString() + "\n";
+			text += toylist.get(n).toString() + "\n";
 		}
 		
 		return text;

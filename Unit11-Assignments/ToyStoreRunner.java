@@ -14,5 +14,16 @@ public class ToyStoreRunner
 		ToyStore store = new ToyStore();
 		store.loadToys("sorry bat sorry sorry sorry train train teddy teddy ball ball");
 		System.out.print(store);
+		
+		System.out.println();
+		System.out.println(store.getMostFrequentToy());
+		
+		System.out.println();
+		System.out.println();
+		
+		store.sortToysByCount();
+		System.out.print(store);
+		System.out.println();
+		System.out.println(store.getMostFrequentToy());
 	}
 }
