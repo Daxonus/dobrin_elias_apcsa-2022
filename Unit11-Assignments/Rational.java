@@ -49,48 +49,40 @@ class Rational implements Comparable<Rational>
 		//new numerator = (num1 * den2 + num2 * den1)
 		//new denominator = (den1 * den2)
 		
-		
-
-
+		numerator = numerator * other.denominator + other.numerator * denominator;
+		denominator = denominator * other.denominator;
 		reduce();
 	}
 
 	private void reduce()
 	{
-
-
-
+		int gcd = gcd(numerator, denominator);
+		numerator /= gcd;
+		denominator /= gcd;
 	}
 
-	private int gcd(int numOne, int numTwo)
+	private int gcd(int numOne, int numTwo) // greatest common divisor
 	{
-		ArrayList<Integer> factorsOne = new ArrayList<Integer>();
+		int divisor = 1;
+		int quotientOne = numOne;
+		int quotientTwo = numTwo;
 		
-		for(int n = 1; n <= numOne; n++)
+		for(int n = Math.min(numOne, numTwo); n > 1; n--)
 		{
-			if(numOne % n == 0)
+			if(quotientOne % n == 0 && quotientTwo % n == 0)
 			{
-				factorsOne.add(n);
-			}
-		}
-		
-		ArrayList<Integer> factorsTwo = new ArrayList<Integer>();
-		
-		for(int n = 1; n < numTwo; n++)
-		{
-			if(numTwo % n == 0)
-			{
-				factorsTwo.add(n);
+				divisor *= n;
+				quotientOne /= n;
+				quotientTwo /= n;
 			}
 		}
 
-
-		return 1;
+		return divisor;
 	}
 
 	public Object clone ()
 	{
-		return "";
+		return new Rational(numerator, denominator);
 	}
 
 
@@ -98,25 +90,44 @@ class Rational implements Comparable<Rational>
 
 	//write get methods for numerator and denominator
 	
+	public int getNumerator()
+	{
+		return numerator;
+	}
+	
+	public int getDenominator()
+	{
+		return denominator;
+	}
 	
 	public boolean equals( Object obj)
 	{
-
-
-		return false;
+		Rational rational2 = (Rational) obj;
+		return (numerator * rational2.denominator == denominator * rational2.numerator);
 	}
 
 	public int compareTo(Rational other)
 	{
-
-
-		return -1;
+		int determinant1 = numerator * other.denominator - denominator * other.numerator;
+		
+		if(determinant1 < 0)
+		{
+			return -1;
+		}
+		
+		else if(determinant1 > 0)
+		{
+			return 1;
+		}
+		
+		return 0;
 	}
-
-
-
 	
 	//write  toString() method
 	
+	public String toString()
+	{
+		return numerator + "/" + denominator;
+	}
 	
 }
