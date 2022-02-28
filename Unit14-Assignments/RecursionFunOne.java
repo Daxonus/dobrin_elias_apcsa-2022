@@ -8,17 +8,27 @@ public class RecursionFunOne
 {
 	public static int countEvenDigits(int num)
 	{
-		int count = 0;
-		String str = "" + num;
-		
-		for(int n = 0; n < str.length(); n++)
+		return countEvenDigits(num, 0);
+	}
+	
+	private static int countEvenDigits(int num, int count)
+	{
+		if(num > 0)
 		{
-			if(Integer.parseInt(str.substring(n, n + 1)) % 2 == 0)
+			if(num % 2 == 0)
 			{
-				count++;
+				return countEvenDigits(num / 10, count + 1);
 			}
+			
+			else
+			{
+				return countEvenDigits(num / 10, count);
+			}	
 		}
 		
-		return count;
+		else
+		{
+			return count;
+		}
 	}
 }
