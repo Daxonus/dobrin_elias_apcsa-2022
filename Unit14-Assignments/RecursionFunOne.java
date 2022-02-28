@@ -1,15 +1,24 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Elias Dobrin
 
 import static java.lang.System.*;
 
 public class RecursionFunOne
 {
-	public static int countOddDigits(int num)
+	public static int countEvenDigits(int num)
 	{
-
-
-		return 0;
+		int count = 0;
+		String str = "" + num;
+		
+		for(int n = 0; n < str.length(); n++)
+		{
+			if(Integer.parseInt(str.substring(n, n + 1)) % 2 == 0)
+			{
+				count++;
+			}
+		}
+		
+		return count;
 	}
 }
