@@ -1,8 +1,8 @@
 //© A+ Computer Science  -  www.apluscompsci.com
-//Name - 
-//Date -
-//Class -
-//Lab  -
+//Name - Elias Dobrin
+//Date - 2/28/2022
+//Class - AP Compsci A - Mr. Mauro
+//Lab  - Recursion Lucky Threes
 
 import static java.lang.System.*;
 
@@ -18,8 +18,44 @@ public class RecursionFunThree
 	 * 777337777  would return 2
 	 * the solution to this problem must use recursion
 	 */
-	public static int luckyThrees( long number )
+	
+	
+	public static int luckyThrees(long number)
 	{
-		return 0;
+		String str = "" + number;
+		int first = Integer.parseInt(str.substring(0, 1));
+		
+		if(first == 3)
+		{
+			return luckyThrees(number, 0);
+		}
+		
+		else
+		{
+			return luckyThrees(number, 0);
+		}
+	}
+	
+	private static int luckyThrees(long number, int count)
+	{
+
+		String str = ("" + number);
+		str = str.substring(1, str.length());
+		
+		if(str.length() > 0)
+		{
+			if(Integer.parseInt(str.substring(0, 1)) == 3)
+			{
+				return luckyThrees(Integer.parseInt(str.substring(0, str.length())), count + 1);
+			}
+			
+			else
+			{
+				return luckyThrees(Integer.parseInt(str.substring(0, str.length())), count);
+			}				
+		}
+		
+		return count;
+
 	}
 }
