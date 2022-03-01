@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Elias Dobrin
 
 import java.util.Arrays;
 import java.util.Scanner;
@@ -19,6 +19,10 @@ public class WordSortTwoRunner
 		{
 			String sentence = file.nextLine();
 			//instantiate a new WordSort
+			
+			WordSortTwo wordSort = new WordSortTwo(sentence);
+			wordSort.sort();
+			System.out.print(wordSort);
 		}
 	}
 }
