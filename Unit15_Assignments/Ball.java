@@ -27,12 +27,25 @@ public class Ball extends Block
 	
 	
 	
-	
-	
-	
 	   
    //add the set methods
-   
+	
+	public void setSpeed(int xs, int ys)
+	{
+		setxSpeed(xs);
+		setySpeed(ys);
+	}
+	
+	public void setxSpeed(int xs)
+	{
+		xSpeed = xs;
+	}
+	
+	public void setySpeed(int ys)
+	{
+		ySpeed = ys;
+	}
+	
 
    public void moveAndDraw(Graphics window)
    {
@@ -55,6 +68,16 @@ public class Ball extends Block
 	}   
 
    //add the get methods
-
+	
+	public int getxSpeed()
+	{
+		return xSpeed;
+	}
+	
+	public int getySpeed()
+	{
+		return ySpeed;
+	}
+	
    //add a toString() method
 }
