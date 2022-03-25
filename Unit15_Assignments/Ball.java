@@ -79,6 +79,7 @@ public class Ball extends Block
 
 
       setX(getX()+xSpeed);
+      setY(getY()+ySpeed);
 		//setY
 
 		//draw the ball at its new location
@@ -86,10 +87,6 @@ public class Ball extends Block
    
 	public boolean equals(Object obj)
 	{
-
-
-
-
 		return false;
 	}   
 
@@ -106,4 +103,9 @@ public class Ball extends Block
 	}
 	
    //add a toString() method
+	
+	public String toString()
+	{
+		return "Ball: (xSpeed: " + xSpeed + ", ySpeed: " + ySpeed + ")";
+	}
 }
