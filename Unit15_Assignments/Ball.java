@@ -19,7 +19,33 @@ public class Ball extends Block
 
 	//add the other Ball constructors
 	
+	public Ball(int x, int y)
+	{
+		super(x, y);
+		xSpeed = 3;
+		ySpeed = 1;
+	}
 	
+	public Ball(int x, int y, int w, int h)
+	{
+		super(x, y, w, h);
+		xSpeed = 3;
+		ySpeed = 1;
+	}
+	
+	public Ball(int x, int y, int w, int h, Color c)
+	{
+		super(x, y, w, h, c);
+		xSpeed = 3;
+		ySpeed = 1;
+	}
+	
+	public Ball(int x, int y, int w, int h, Color c, int xs, int ys)
+	{
+		super(x, y, w, h, c);
+		xSpeed = xs;
+		ySpeed = ys;
+	}
 	
 	
 	
@@ -32,16 +58,16 @@ public class Ball extends Block
 	
 	public void setSpeed(int xs, int ys)
 	{
-		setxSpeed(xs);
-		setySpeed(ys);
+		setXSpeed(xs);
+		setYSpeed(ys);
 	}
 	
-	public void setxSpeed(int xs)
+	public void setXSpeed(int xs)
 	{
 		xSpeed = xs;
 	}
 	
-	public void setySpeed(int ys)
+	public void setYSpeed(int ys)
 	{
 		ySpeed = ys;
 	}
@@ -69,12 +95,12 @@ public class Ball extends Block
 
    //add the get methods
 	
-	public int getxSpeed()
+	public int getXSpeed()
 	{
 		return xSpeed;
 	}
 	
-	public int getySpeed()
+	public int getYSpeed()
 	{
 		return ySpeed;
 	}
