@@ -47,7 +47,6 @@ public class Paddle extends Block
    public void moveUpAndDraw(Graphics window)
    {
 
-
    }
 
    public void moveDownAndDraw(Graphics window)
