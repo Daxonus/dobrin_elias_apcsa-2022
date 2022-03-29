@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Elias Dobrin	
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -78,6 +78,22 @@ public class Pong extends Canvas implements KeyListener, Runnable
 
 		//see if the ball hits the left paddle
 		
+		if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() + Math.abs(ball.getXSpeed()))
+		{
+			if(ball.getY() >= leftPaddle.getY() && ball.getY() <= leftPaddle.getY() + leftPaddle.getHeight() ||
+					ball.getY() + ball.getHeight() >= leftPaddle.getY() && ball.getY() + ball.getHeight() < leftPaddle.getY() + leftPaddle.getHeight())
+			{
+				if(ball.getX() <= leftPaddle.getX() + leftPaddle.getWidth() - Math.abs(ball.getXSpeed()))
+				{
+					ball.setYSpeed(-ball.getYSpeed());
+				}
+				
+				else
+				{
+					ball.setXSpeed(-ball.getXSpeed());
+				}
+			}
+		}
 		
 		
 		//see if the ball hits the right paddle

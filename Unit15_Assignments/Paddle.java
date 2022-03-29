@@ -12,7 +12,7 @@ public class Paddle extends Block
 
    public Paddle()
    {
-	   super(10,10, 10, 10);
+	   super(10, 10);
 	   setSpeed(5);
    }
 
