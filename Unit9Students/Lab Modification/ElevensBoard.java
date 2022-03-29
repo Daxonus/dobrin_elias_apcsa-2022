@@ -4,6 +4,7 @@ import java.util.ArrayList;
 /**
  * The ElevensBoard class represents the board in a game of Elevens.
  */
+
 public class ElevensBoard extends Board {
 
 	/**
@@ -40,6 +41,7 @@ public class ElevensBoard extends Board {
 	 */
 	 public ElevensBoard() {
 	 	super(BOARD_SIZE, RANKS, SUITS, POINT_VALUES);
+	 	System.out.print("Name: Elias Dobrin, Period: 1, Date: 3/25/2022, Number: #37");
 	 }
 
 	/**
@@ -54,11 +56,18 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+		/*
 		if(containsPairSum11(selectedCards) || containsJQK(selectedCards))
+		{
+			return true;
+		}*/
+		
+		if(containsTripletSum11(selectedCards) || containsPairSameFaceCards(selectedCards))
 		{
 			return true;
 		}
 		
+		System.out.print("Sorry you lose");
 		return false;
 	}
 
@@ -135,6 +144,44 @@ public class ElevensBoard extends Board {
 		if(hasJack && hasQueen && hasKing)
 		{
 			return true;
+		}
+		
+		return false;
+	}
+	
+	private boolean containsTripletSum11(List<Integer> selectedCards)
+	{
+		for(int a = 0; a < selectedCards.size(); a++)
+		{
+			for(int b = a + 1; b < selectedCards.size(); b++)
+			{
+				for(int c = b + 1; c < selectedCards.size(); c++)
+				{
+					if(POINT_VALUES[selectedCards.get(a)] + POINT_VALUES[selectedCards.get(b)] + POINT_VALUES[selectedCards.get(c)] == 11)
+					{
+						return true;
+					}
+				}
+			}
+		}
+		
+		return false;
+	}
+	
+	private boolean containsPairSameFaceCards(List<Integer> selectedCards)
+	{
+		for(int a = 0; a < selectedCards.size(); a++)
+		{
+			if(POINT_VALUES[selectedCards.get(a)] == 0)
+			{
+				for(int b = a + 1; b < selectedCards.size(); b++)
+				{
+					if(POINT_VALUES[selectedCards.get(b)] == 0)
+					{
+						return true;
+					}
+				}
+			}
 		}
 		
 		return false;
