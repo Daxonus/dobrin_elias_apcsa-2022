@@ -12,7 +12,7 @@ public class Ball extends Block
 
 	public Ball()
 	{
-		super(200,200);
+		super(200, 200);
 		xSpeed = 3;
 		ySpeed = 1;
 	}
@@ -87,6 +87,13 @@ public class Ball extends Block
    
 	public boolean equals(Object obj)
 	{
+		Ball other = (Ball) obj;
+		
+		if(super.equals(other) && getXSpeed() == other.getXSpeed() && getYSpeed() == other.getYSpeed())
+		{
+			return true;
+		}
+		
 		return false;
 	}   
 
@@ -106,6 +113,6 @@ public class Ball extends Block
 	
 	public String toString()
 	{
-		return "Ball: (xSpeed: " + xSpeed + ", ySpeed: " + ySpeed + ")";
+		return getX() + " " + getY() + " " + getWidth() + " " + getHeight() + " " + getColor() + " " + getXSpeed() + " " + getYSpeed();
 	}
 }
