@@ -97,8 +97,24 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		
 		
 		//see if the ball hits the right paddle
+		// copied and changed but not sure if works?
 		
-		
+		if(ball.getX() >= rightPaddle.getX() - Math.abs(ball.getXSpeed()))
+		{
+			if(ball.getY() >= rightPaddle.getY() && ball.getY() <= rightPaddle.getY() + rightPaddle.getHeight() ||
+					ball.getY() + ball.getHeight() >= rightPaddle.getY() && ball.getY() + ball.getHeight() < rightPaddle.getY() + rightPaddle.getHeight())
+			{
+				if(ball.getX() >= rightPaddle.getX() + Math.abs(ball.getXSpeed()))
+				{
+					ball.setYSpeed(-ball.getYSpeed());
+				}
+				
+				else
+				{
+					ball.setXSpeed(-ball.getXSpeed());
+				}
+			}
+		}		
 		
 
 
