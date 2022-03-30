@@ -20,12 +20,25 @@ public class Pong extends Canvas implements KeyListener, Runnable
 	private Paddle rightPaddle;
 	private boolean[] keys;
 	private BufferedImage back;
+	
+	private int leftScore;
+	private int rightScore;
+	private boolean gameOver = false;
 
 
 	public Pong()
 	{
 		//set up all variables related to the game
-
+		ball = new Ball();
+		ball.setColor(Color.GREEN);
+		leftPaddle = new Paddle(5, 10, 5, 10, 100);
+		rightPaddle = new Paddle(720, 10, 5, 10, 100);
+		
+		leftPaddle.setColor(Color.ORANGE);
+		rightPaddle.setColor(Color.MAGENTA);
+		
+		leftScore = 0;
+		rightScore = 0;
 
 
 
@@ -61,7 +74,12 @@ public class Pong extends Canvas implements KeyListener, Runnable
 		ball.moveAndDraw(graphToBack);
 		leftPaddle.draw(graphToBack);
 		rightPaddle.draw(graphToBack);
-
+		
+		
+		
+		
+		
+		
 
 		//see if ball hits left wall or right wall
 		if(!(ball.getX()>=10 && ball.getX()<=780))
