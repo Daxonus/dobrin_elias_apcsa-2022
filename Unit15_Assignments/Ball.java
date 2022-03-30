@@ -12,7 +12,7 @@ public class Ball extends Block
 
 	public Ball()
 	{
-		super(200, 200);
+		super(200, 200, 20, 20);
 		xSpeed = 3;
 		ySpeed = 1;
 	}
@@ -21,7 +21,7 @@ public class Ball extends Block
 	
 	public Ball(int x, int y)
 	{
-		super(x, y);
+		super(x, y, 20, 20);
 		xSpeed = 3;
 		ySpeed = 1;
 	}
@@ -46,12 +46,6 @@ public class Ball extends Block
 		xSpeed = xs;
 		ySpeed = ys;
 	}
-	
-	
-	
-	
-	
-	
 	
 	   
    //add the set methods
@@ -80,7 +74,7 @@ public class Ball extends Block
 
       setX(getX()+xSpeed);
       setY(getY()+ySpeed);
-		//setY
+      draw(window);
 
 		//draw the ball at its new location
    }
