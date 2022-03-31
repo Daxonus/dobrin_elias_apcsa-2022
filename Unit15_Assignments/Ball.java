@@ -70,11 +70,10 @@ public class Ball extends Block
    public void moveAndDraw(Graphics window)
    {
    	//draw a white ball at old ball location
-
-
-      setX(getX()+xSpeed);
-      setY(getY()+ySpeed);
-      draw(window);
+	   
+	   setX(getX()+getXSpeed());
+	   setY(getY()+getYSpeed());
+	   draw(window);
 
 		//draw the ball at its new location
    }

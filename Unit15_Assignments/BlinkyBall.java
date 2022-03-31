@@ -37,17 +37,15 @@ class BlinkyBall extends Ball
 
    public Color randomColor()
    {
-	   int r = (int) Math.floor(255 * Math.random());		//use Math.random()
-	   int g = (int) Math.floor(255 * Math.random());
-	   int b = (int) Math.floor(255 * Math.random());
+	   int r = (int) Math.floor(256 * Math.random());		//use Math.random()
+	   int g = (int) Math.floor(256 * Math.random());
+	   int b = (int) Math.floor(256 * Math.random());
 	   return new Color(r,g,b);
    }
 
    public void moveAndDraw(Graphics window)
    {
-
-
-
-
+	   setColor(randomColor());
+	   super.moveAndDraw(window);
    }
 }
