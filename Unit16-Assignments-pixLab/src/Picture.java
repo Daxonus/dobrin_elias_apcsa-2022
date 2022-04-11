@@ -336,6 +336,41 @@ public class Picture extends SimplePicture
     }   
   }
 
+  public void copy(Picture fromPic, 
+                 int startRow, int startCol, int endRow, int endCol)
+  {
+    Pixel fromPixel = null;
+    Pixel toPixel = null;
+    Pixel[][] toPixels = this.getPixels2D();
+    Pixel[][] fromPixels = fromPic.getPixels2D();
+    for (int fromRow = 0, toRow = startRow; 
+         fromRow < endRow &&
+         toRow < toPixels.length; 
+         fromRow++, toRow++)
+    {
+      for (int fromCol = 0, toCol = startCol; 
+           fromCol < endCol &&
+           toCol < toPixels[0].length;  
+           fromCol++, toCol++)
+      {
+        fromPixel = fromPixels[fromRow][fromCol];
+        toPixel = toPixels[toRow][toCol];
+        toPixel.setColor(fromPixel.getColor());
+      }
+    }   
+  }
+  
+  public void myCollage(Picture pic1, Picture pic2, Picture pic3)
+  {
+	  pic1.keepOnlyBlue();
+	  pic2.keepOnlyGreen();
+	  pic3.keepOnlyRed();
+	  copy(pic1, 80, 80);
+	  copy(pic2, 200, 250);
+	  copy(pic3, 340, 500);
+  }
+
+  
   /** Method to create a collage of several pictures */
   public void createCollage()
   {
