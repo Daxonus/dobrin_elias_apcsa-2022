@@ -1,6 +1,6 @@
 //(c) A+ Computer Science
 //www.apluscompsci.com
-//Name -
+//Name - Elias Dobrin
 
 import javax.swing.JFrame;
 import java.awt.Component;

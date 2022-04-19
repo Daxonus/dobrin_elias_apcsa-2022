@@ -1,8 +1,8 @@
 //© A+ Computer Science  -  www.apluscompsci.com
-//Name -
-//Date -
-//Class -
-//Lab  -
+//Name - Elias Dobrin
+//Date - April 18, 2022
+//Class - Mr. Mauro AP Compsci A
+//Lab  - Starfighter
 
 public interface Locatable
 {
