@@ -80,11 +80,19 @@ public class AlienHorde
 		if(minX < 0)
 		{
 			goingRight = true;
+			for(Alien alien : aliens)
+			{
+				alien.move("DOWN");
+			}
 		}
 		
 		if(maxX > 800)
 		{
 			goingRight = false;
+			for(Alien alien : aliens)
+			{
+				alien.move("DOWN");
+			}
 		}
 	}
 
@@ -97,11 +105,10 @@ public class AlienHorde
 				Alien alien = aliens.get(a);
 				Ammo shot = shots.get(s);
 				
-				if(alien.getX() > shot.getX() && alien.getX() - alien.getWidth() < shot.getX())
+				if(alien.getX() + alien.getWidth() > shot.getX() && alien.getX() < shot.getX() + 10)
 				{
-					if(alien.getY() > shot.getY() && alien.getY() - alien.getHeight() < shot.getY())
+					if(alien.getY() + alien.getHeight() > shot.getY() && alien.getY() < shot.getY() + 10)
 					{
-						System.out.print("Hit");
 						aliens.remove(a);
 						shots.remove(s);
 						removeDeadOnes(shots);
@@ -111,9 +118,14 @@ public class AlienHorde
 			}
 		}
 	}
+	
+	public List<Alien> getList()
+	{
+		return aliens;
+	}
 
 	public String toString()
 	{
-		return "";
+		return "" + aliens;
 	}
 }

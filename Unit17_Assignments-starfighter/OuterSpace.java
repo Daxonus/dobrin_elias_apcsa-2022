@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
+	private boolean isGame;
 	private Ship ship;
 	private AlienHorde horde;
 	private Bullets shots;
@@ -27,12 +28,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	public OuterSpace()
 	{
 		setBackground(Color.black);
-
+		
+		isGame = true;
 		keys = new boolean[5];
 
 		//instantiate other instance variables
 		//Ship, Alien
-		ship = new Ship(100, 100);
+		ship = new Ship(400, 300);
 		horde = new AlienHorde(5, 3);
 		shots = new Bullets();
 		ammoCooldown = 0;
@@ -67,6 +69,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
 
+		if(isGame == false)
+		{
+			graphToBack.setColor(Color.RED);
+			graphToBack.fillRect(0, 0, 800, 600);
+			twoDGraph.drawImage(back, null, 0, 0);
+			return;
+		}
+		
 		//add code to move Ship, Alien, etc.
 		
 		if(keys[0] == true)
@@ -103,6 +113,22 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		horde.moveEmAll();
 		shots.moveEmAll();
 		horde.removeDeadOnes(shots.getList());
+		
+		for(int a = 0; a < horde.getList().size(); a++)
+		{
+			Alien alien = horde.getList().get(a);
+			
+			if(ship.getX() + ship.getWidth() > alien.getX() && ship.getX() < alien.getX() + alien.getWidth())
+			{
+				if(ship.getY() + ship.getHeight() > alien.getY() && ship.getY() < alien.getY() + alien.getHeight())
+				{
+					System.out.print("You died");
+					isGame = false;
+				}
+			}
+		}
+
+		
 		shots.cleanEmUp();
 		shots.drawEmAll(graphToBack);
 		horde.drawEmAll(graphToBack);
