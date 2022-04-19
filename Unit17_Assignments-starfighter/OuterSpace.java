@@ -17,17 +17,10 @@ import java.util.ArrayList;
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
 	private Ship ship;
-	private Alien alienOne;
-	private Alien alienTwo;
-	private Bullets bullets;
-	private int ammoCooldown;
-
-	/* uncomment once you are ready for this part
-	 *
-   private AlienHorde horde;
+	private AlienHorde horde;
 	private Bullets shots;
-	*/
-
+	private int ammoCooldown;
+	
 	private boolean[] keys;
 	private BufferedImage back;
 
@@ -40,9 +33,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		//instantiate other instance variables
 		//Ship, Alien
 		ship = new Ship(100, 100);
-		alienOne = new Alien(100, 30);
-		alienTwo = new Alien(200, 30);
-		bullets = new Bullets();
+		horde = new AlienHorde(5);
+		shots = new Bullets();
 		ammoCooldown = 0;
 
 		this.addKeyListener(this);
@@ -99,7 +91,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		if(keys[4] == true && ammoCooldown == 0)
 		{
-			bullets.add(new Ammo(ship.getX() + ship.getWidth() / 2, ship.getY() + ship.getHeight() / 2));
+			shots.add(new Ammo(ship.getX() + ship.getWidth() / 2, ship.getY() + ship.getHeight() / 2));
 			ammoCooldown = 20;
 		}
 		
@@ -107,12 +99,13 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			ammoCooldown--;
 		}
-		bullets.moveEmAll();
-		bullets.cleanEmUp();
-		bullets.drawEmAll(graphToBack);
 		
-		alienOne.draw(graphToBack);
-		alienTwo.draw(graphToBack);
+		horde.moveEmAll();
+		
+		shots.moveEmAll();
+		shots.cleanEmUp();
+		shots.drawEmAll(graphToBack);
+		horde.drawEmAll(graphToBack);
 		ship.draw(graphToBack);
 
 		//add in collision detection to see if Bullets hit the Aliens and if Bullets hit the Ship
