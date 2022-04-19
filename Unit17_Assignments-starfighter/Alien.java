@@ -89,6 +89,6 @@ public class Alien extends MovingThing
 
 	public String toString()
 	{
-		return "Alien " + super.toString() + getSpeed();
+		return super.toString() + " " + getSpeed();
 	}
 }

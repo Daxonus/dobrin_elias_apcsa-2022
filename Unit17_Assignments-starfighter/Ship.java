@@ -16,19 +16,19 @@ public class Ship extends MovingThing
 
 	public Ship()
 	{
-		this(10, 10, 10, 10, 10);
+		this(100, 100, 100, 100, 5);
 	}
 
 	public Ship(int x, int y)
 	{
 	   //add code here
-		this(x, y, 10, 10, 10);
+		this(x, y, 100, 100, 5);
 	}
 
 	public Ship(int x, int y, int s)
 	{
 	   //add code here
-		this(x, y, 10, 10, s);
+		this(x, y, 100, 100, s);
 	}
 
 	public Ship(int x, int y, int w, int h, int s)
@@ -70,12 +70,12 @@ public class Ship extends MovingThing
 			setX(getX() + speed);
 		}
 		
-		else if(direction.equals("DOWN"))
+		else if(direction.equals("UP"))
 		{
 			setY(getY() - speed);
 		}
 		
-		else if(direction.equals("UP"))
+		else if(direction.equals("DOWN"))
 		{
 			setY(getY() + speed);
 		}
@@ -83,11 +83,11 @@ public class Ship extends MovingThing
 
 	public void draw( Graphics window )
 	{
-   	window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
+		window.drawImage(image,getX(),getY(),getWidth(),getHeight(),null);
 	}
 
 	public String toString()
 	{
-		return "Ship " + super.toString() + getSpeed();
+		return super.toString() + " " + getSpeed();
 	}
 }

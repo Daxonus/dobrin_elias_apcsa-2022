@@ -48,7 +48,6 @@ public abstract class MovingThing implements Moveable
 	{
 		//add code here
 		xPos = x;
-		
 	}
 
 	public void setY(int y)
