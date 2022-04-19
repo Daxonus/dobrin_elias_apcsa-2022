@@ -15,13 +15,16 @@ public class AlienHorde
 	private List<Alien> aliens;
 	private boolean goingRight;
 
-	public AlienHorde(int size)
+	public AlienHorde(int size, int thick)
 	{
 		aliens = new ArrayList<Alien>(size);
 		
-		for(int a = 0; a < size; a++)
+		for(int t = 0; t < thick; t++)
 		{
-			aliens.add(new Alien(100 * a, 0));
+			for(int a = 0; a < size; a++)
+			{
+				aliens.add(new Alien(100 * a, 50 * t));
+			}			
 		}
 		
 		goingRight = true;
@@ -87,6 +90,26 @@ public class AlienHorde
 
 	public void removeDeadOnes(List<Ammo> shots)
 	{
+		for(int a = 0; a < aliens.size(); a++)
+		{
+			for(int s = 0; s < shots.size(); s++)
+			{
+				Alien alien = aliens.get(a);
+				Ammo shot = shots.get(s);
+				
+				if(alien.getX() > shot.getX() && alien.getX() - alien.getWidth() < shot.getX())
+				{
+					if(alien.getY() > shot.getY() && alien.getY() - alien.getHeight() < shot.getY())
+					{
+						System.out.print("Hit");
+						aliens.remove(a);
+						shots.remove(s);
+						removeDeadOnes(shots);
+						return;
+					}
+				}
+			}
+		}
 	}
 
 	public String toString()
