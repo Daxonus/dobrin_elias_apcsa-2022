@@ -19,7 +19,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	private Ship ship;
 	private Alien alienOne;
 	private Alien alienTwo;
-	private ArrayList<Ammo> ammos;
+	private Bullets bullets;
 	private int ammoCooldown;
 
 	/* uncomment once you are ready for this part
@@ -42,7 +42,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		ship = new Ship(100, 100);
 		alienOne = new Alien(100, 30);
 		alienTwo = new Alien(200, 30);
-		ammos = new ArrayList<Ammo>();
+		bullets = new Bullets();
 		ammoCooldown = 0;
 
 		this.addKeyListener(this);
@@ -99,7 +99,7 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		
 		if(keys[4] == true && ammoCooldown == 0)
 		{
-			ammos.add(new Ammo(ship.getX() + ship.getWidth() / 2, ship.getY() + ship.getHeight() / 2));
+			bullets.add(new Ammo(ship.getX() + ship.getWidth() / 2, ship.getY() + ship.getHeight() / 2));
 			ammoCooldown = 20;
 		}
 		
@@ -107,12 +107,10 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		{
 			ammoCooldown--;
 		}
+		bullets.moveEmAll();
+		bullets.cleanEmUp();
+		bullets.drawEmAll(graphToBack);
 		
-		for(Ammo ammo : ammos)
-		{
-			ammo.move("UP");
-			ammo.draw(graphToBack);
-		}
 		alienOne.draw(graphToBack);
 		alienTwo.draw(graphToBack);
 		ship.draw(graphToBack);
