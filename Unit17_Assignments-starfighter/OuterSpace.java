@@ -16,7 +16,8 @@ import java.util.ArrayList;
 
 public class OuterSpace extends Canvas implements KeyListener, Runnable
 {
-	private boolean isGame;
+	private boolean isWin;
+	private boolean isOver;
 	private Ship ship;
 	private AlienHorde horde;
 	private Bullets shots;
@@ -29,7 +30,8 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 	{
 		setBackground(Color.black);
 		
-		isGame = true;
+		isWin = false;
+		isOver = false;
 		keys = new boolean[5];
 
 		//instantiate other instance variables
@@ -69,7 +71,15 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 		graphToBack.setColor(Color.BLACK);
 		graphToBack.fillRect(0,0,800,600);
 
-		if(isGame == false)
+		if(isWin == true)
+		{
+			graphToBack.setColor(Color.GREEN);
+			graphToBack.fillRect(0, 0, 800, 600);
+			twoDGraph.drawImage(back, null, 0, 0);
+			return;
+		}
+		
+		if(isOver == true)
 		{
 			graphToBack.setColor(Color.RED);
 			graphToBack.fillRect(0, 0, 800, 600);
@@ -123,9 +133,14 @@ public class OuterSpace extends Canvas implements KeyListener, Runnable
 				if(ship.getY() + ship.getHeight() > alien.getY() && ship.getY() < alien.getY() + alien.getHeight())
 				{
 					System.out.print("You died");
-					isGame = false;
+					isOver = true;
 				}
 			}
+		}
+		
+		if(horde.getList().size() == 0)
+		{
+			isWin = true;
 		}
 
 		
