@@ -176,31 +176,32 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
-    testKeepOnlyBlue();
-    testKeepOnlyRed();
-    testKeepOnlyGreen();
-    testNegate();
-    testGrayscale();
-    testFixUnderwater();
-    testMirrorVertical();
-    //testMirrorVerticalRightToLeft();
-    //testMirrorHorizontal();
-	testMirrorHorizontalBotToTop();
-	//testMirrorDiagonal();
-	//testMirrorTemple();
-    testMirrorArms();
-    testMirrorGull();
-    //testCollage();
-    //testCopy();
-	//testMyCollage();
-    testEdgeDetection();
-    testEdgeDetection2();
-    //testChromakey();
-    //testEncodeAndDecode();
-    //testGetCountRedOverValue(250);
-    //testSetRedToHalfValueInTopHalf();
-    //testClearBlueOverValue(200);
-    //testGetAverageForColumn(0);
+	  
+    // testZeroBlue();
+    // testKeepOnlyBlue();
+    // testKeepOnlyRed();
+    // testKeepOnlyGreen();
+	testNegate();
+	// testGrayscale();
+	// testFixUnderwater();
+	// testMirrorVertical();
+    // testMirrorVerticalRightToLeft();
+    // testMirrorHorizontal();
+	// testMirrorHorizontalBotToTop();
+	// testMirrorDiagonal();
+	// testMirrorTemple();
+	testMirrorArms();
+	// testMirrorGull();
+    // testCollage();
+    // testCopy();
+	// testMyCollage();
+	testEdgeDetection();
+	// testEdgeDetection2();
+    // testChromakey();
+    // testEncodeAndDecode();
+    // testGetCountRedOverValue(250);
+    // testSetRedToHalfValueInTopHalf();
+    // testClearBlueOverValue(200);
+    // testGetAverageForColumn(0);
   }
 }
