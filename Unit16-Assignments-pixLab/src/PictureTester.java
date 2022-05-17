@@ -169,6 +169,14 @@ public class PictureTester
     swan.explore();
   }
   
+  public static void testBackgroundSwap()
+  {
+	  Picture mark = new Picture("blue-mark.jpg");
+	  Picture moon = new Picture("moon-surface.jpg");
+	  mark.backgroundSwap(moon);
+	  mark.explore();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -181,7 +189,7 @@ public class PictureTester
     // testKeepOnlyBlue();
     // testKeepOnlyRed();
     // testKeepOnlyGreen();
-	testNegate();
+	// testNegate();
 	// testGrayscale();
 	// testFixUnderwater();
 	// testMirrorVertical();
@@ -190,12 +198,12 @@ public class PictureTester
 	// testMirrorHorizontalBotToTop();
 	// testMirrorDiagonal();
 	// testMirrorTemple();
-	testMirrorArms();
+	// testMirrorArms();
 	// testMirrorGull();
     // testCollage();
     // testCopy();
 	// testMyCollage();
-	testEdgeDetection();
+	// testEdgeDetection();
 	// testEdgeDetection2();
     // testChromakey();
     // testEncodeAndDecode();
@@ -203,5 +211,7 @@ public class PictureTester
     // testSetRedToHalfValueInTopHalf();
     // testClearBlueOverValue(200);
     // testGetAverageForColumn(0);
+	
+	testBackgroundSwap();
   }
 }

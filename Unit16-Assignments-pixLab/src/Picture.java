@@ -303,7 +303,44 @@ public class Picture extends SimplePicture
 	  mirrorVertical();
   }
   
-  
+  public void backgroundSwap(Picture newBackground)
+  {
+	  Pixel[][] pixels = this.getPixels2D();
+	  Pixel[][] otherPixels = newBackground.getPixels2D();
+	  int height = pixels.length;
+	  int width = pixels[0].length;
+	  
+	  // first pass
+	  for(int row = 0; row < height; row++)
+	  {
+		  for(int col = 0; col < width; col++)
+		  {
+			  if(row > 362 && row < 385 && col > 354 && col < 406)
+			  {
+				  Pixel pixel = pixels[row][col];
+				  Pixel samplePixel = pixels[row - 23][col];
+				  pixel.setColor(samplePixel.getColor());
+			  }
+		  }
+	  }
+	  
+	  // second pass
+	  for(int row = 0; row < height; row++)
+	  {
+		  for(int col = 0; col < width; col++)
+		  {
+			  Pixel pixel = pixels[row][col];
+			  
+			  if(Math.abs(pixel.getRed() - 5) < 50 &&
+				Math.abs(pixel.getGreen() - 42) < 50 &&
+				Math.abs(pixel.getBlue() - 69) < 50)
+			  {
+				  Pixel otherPixel = otherPixels[row][col];
+				  pixel.setColor(otherPixel.getColor());
+			  }
+		  }
+	  }
+  }
   
   /** copy from the passed fromPic to the
     * specified startRow and startCol in the
