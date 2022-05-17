@@ -305,6 +305,11 @@ public class Picture extends SimplePicture
   
   public void backgroundSwap(Picture newBackground)
   {
+	  System.out.println("Name: Elias Dobrin");
+	  System.out.println("Period: 1");
+	  System.out.println("Computer Number: #37");
+	  System.out.println("Date: 5/17/2022");
+	  
 	  Pixel[][] pixels = this.getPixels2D();
 	  Pixel[][] otherPixels = newBackground.getPixels2D();
 	  int height = pixels.length;
