@@ -511,6 +511,7 @@ public class Picture extends SimplePicture
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
+	  // shift the message picture by a sine curve
 	  for(int r = 0; r < this.getHeight(); r++)
 	  {
 		  for(int i = 0; i < 5 * (1 + Math.sin(20 * 2 * Math.PI * r / this.getHeight())); i++)
@@ -544,6 +545,7 @@ public class Picture extends SimplePicture
 	  
 	  Random generator = new Random();
 	  
+	  // add black dots randomly and uniformly
 	  for(int n = 0; n < 2000; n++)
 	  {
 		  int r = generator.nextInt(0, this.getHeight());
@@ -552,7 +554,8 @@ public class Picture extends SimplePicture
 		  messagePixels[r][c].setGreen(0);
 		  messagePixels[r][c].setBlue(0);
 	  }
-
+	  
+	  // add black dots in the shape of rings of different radii
 	  for(int n = 0; n < 5000; n++)
 	  {
 		  int r;
@@ -601,6 +604,7 @@ public class Picture extends SimplePicture
 		  messagePixels[r][c].setBlue(0);
 	  }
 	  
+	  // make black pixels, pixels whose average are roundable down and vice versa
 	  for(int r = 0; r < this.getHeight(); r++)
 	  {
 		  for(int c = 0; c < this.getWidth(); c++)
@@ -673,6 +677,7 @@ public class Picture extends SimplePicture
 	  Picture messageRandomPicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] messageRandomPixels = messageRandomPicture.getPixels2D();
 	  
+	  // check if black or white pixel based on if average of colors is roundable up or down
 	  for(int r = 0; r < this.getHeight(); r++)
 	  {
 		  for(int c = 0; c < this.getWidth(); c++)
@@ -695,6 +700,7 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	  
+	  // left with a noisy but readable text image
 	  return messageRandomPicture;
   }
   
