@@ -542,26 +542,63 @@ public class Picture extends SimplePicture
 		  }
 	  }
 	  
+	  Random generator = new Random();
 	  
-	  Random generator = new Random(234089);
-	  for(int n = 0; n < 100000; n++)
+	  for(int n = 0; n < 2000; n++)
 	  {
-		  int r1 = generator.nextInt(0, this.getHeight());
-		  int c1 = generator.nextInt(0, this.getWidth());
-		  int r2 = Math.min(Math.max(r1 + generator.nextInt(-2, 2 + 1), 0), this.getHeight() - 1);
-		  int c2 = Math.min(Math.max(c1 + generator.nextInt(-2, 2 + 1), 0), this.getWidth() - 1);
+		  int r = generator.nextInt(0, this.getHeight());
+		  int c = generator.nextInt(0, this.getWidth());
+		  messagePixels[r][c].setRed(0);
+		  messagePixels[r][c].setGreen(0);
+		  messagePixels[r][c].setBlue(0);
+	  }
+
+	  for(int n = 0; n < 5000; n++)
+	  {
+		  int r;
+		  int c;
+		  int minDim = Math.min(this.getWidth(), this.getHeight());
+		  int maxDim = Math.max(this.getWidth(), this.getHeight());
 		  
-		  //int r2 = generator.nextInt(0, this.getHeight());
-		  // int c2 = generator.nextInt(0, this.getWidth());
+		  r = (int) (generator.nextDouble(0.15, 0.45) * maxDim * Math.cos(2 * Math.PI * n / 5000));
+		  c = (int) (generator.nextDouble(0.15, 0.45) * maxDim * Math.sin(2 * Math.PI * n / 5000));
+		  r += this.getHeight() / 2;
+		  c += this.getWidth() / 2;
+		  r = Math.min(Math.max(r, 0), this.getHeight() - 1);
+		  c = Math.min(Math.max(c, 0), this.getWidth() - 1);
+		  messagePixels[r][c].setRed(0);
+		  messagePixels[r][c].setGreen(0);
+		  messagePixels[r][c].setBlue(0);
 		  
-		  int[] temp = {messagePixels[r1][c1].getRed(), messagePixels[r1][c1].getGreen(), messagePixels[r1][c1].getBlue()};
-		  messagePixels[r1][c1].setRed(messagePixels[r2][c2].getRed());
-		  messagePixels[r1][c1].setGreen(messagePixels[r2][c2].getGreen());
-		  messagePixels[r1][c1].setBlue(messagePixels[r2][c2].getBlue());
+		  r = (int) (generator.nextDouble(0.05, 0.2) * minDim * Math.cos(2 * Math.PI * n / 5000));
+		  c = (int) (generator.nextDouble(0.05, 0.2) * minDim * Math.sin(2 * Math.PI * n / 5000));
+		  r += this.getHeight() / 2;
+		  c += this.getWidth() / 2;
+		  r = Math.min(Math.max(r, 0), this.getHeight() - 1);
+		  c = Math.min(Math.max(c, 0), this.getWidth() - 1);
+		  messagePixels[r][c].setRed(0);
+		  messagePixels[r][c].setGreen(0);
+		  messagePixels[r][c].setBlue(0);
 		  
-		  messagePixels[r2][c2].setRed(temp[0]);
-		  messagePixels[r2][c2].setGreen(temp[1]);
-		  messagePixels[r2][c2].setBlue(temp[2]);
+		  r = (int) (generator.nextDouble(0.3, 0.45) * minDim * Math.cos(2 * Math.PI * n / 5000));
+		  c = (int) (generator.nextDouble(0.3, 0.45) * minDim * Math.sin(2 * Math.PI * n / 5000));
+		  r += this.getHeight() / 2;
+		  c += this.getWidth() / 2;
+		  r = Math.min(Math.max(r, 0), this.getHeight() - 1);
+		  c = Math.min(Math.max(c, 0), this.getWidth() - 1);
+		  messagePixels[r][c].setRed(0);
+		  messagePixels[r][c].setGreen(0);
+		  messagePixels[r][c].setBlue(0);
+		  
+		  r = (int) (generator.nextDouble(0.4, 0.45) * maxDim * Math.cos(2 * Math.PI * n / 5000));
+		  c = (int) (generator.nextDouble(0.4, 0.45) * maxDim * Math.sin(2 * Math.PI * n / 5000));
+		  r += this.getHeight() / 2;
+		  c += this.getWidth() / 2;
+		  r = Math.min(Math.max(r, 0), this.getHeight() - 1);
+		  c = Math.min(Math.max(c, 0), this.getWidth() - 1);
+		  messagePixels[r][c].setRed(0);
+		  messagePixels[r][c].setGreen(0);
+		  messagePixels[r][c].setBlue(0);
 	  }
 	  
 	  for(int r = 0; r < this.getHeight(); r++)

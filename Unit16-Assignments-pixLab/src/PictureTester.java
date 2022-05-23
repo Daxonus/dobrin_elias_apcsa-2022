@@ -188,11 +188,10 @@ public class PictureTester
   public static void testDecode()
   {
 	  Picture backgroundPicture = new Picture("beach.jpg");
-	  Picture messagePicture = new Picture("test.jpg");
+	  Picture messagePicture = new Picture("msg.jpg");
 	  backgroundPicture.encode(messagePicture);
-	  
 	  Picture decodedPicture = backgroundPicture.decode();
-	  decodedPicture.show();
+	  decodedPicture.explore();
   }
   
   /** Main method for testing.  Every class can have a main
