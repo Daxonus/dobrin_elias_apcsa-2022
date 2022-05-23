@@ -527,6 +527,69 @@ public class Picture extends SimplePicture
 			  messagePixels[row][col].setBlue(temp[2]);
 		  }
 	  }
+	  
+	  for(int r = 0; r < this.getHeight(); r++)
+	  {
+		  for(int c = 0; c < this.getWidth(); c++)
+		  {
+			  boolean black = (messagePixels[r][c].getAverage() < 128);
+			  double average = backgroundPixels[r][c].getAverage();
+			  
+			  if(black)
+			  {
+				  int delta;
+				  
+				  if(backgroundPixels[r][c].getRed() >= 128)
+				  {
+					  delta = -1;
+				  }
+				  
+				  else
+				  {
+					  delta = 1;
+				  }
+				  
+				  if(Math.round(average) == average)
+				  {
+					  backgroundPixels[r][c].setRed(backgroundPixels[r][c].getRed() + delta);
+				  }
+				  
+				  average = backgroundPixels[r][c].getAverage();
+				  
+				  if(Math.round(average) == average)
+				  {
+					  backgroundPixels[r][c].setRed(backgroundPixels[r][c].getRed() + delta);
+				  }
+			  }
+			  
+			  else
+			  {
+				  int delta;
+				  
+				  if(backgroundPixels[r][c].getGreen() >= 128)
+				  {
+					  delta = -1;
+				  }
+				  
+				  else
+				  {
+					  delta = 1;
+				  }
+				  
+				  if(Math.round(average) != average)
+				  {
+					  backgroundPixels[r][c].setGreen(backgroundPixels[r][c].getGreen() + delta);
+				  }
+				  
+				  average = backgroundPixels[r][c].getAverage();
+				  
+				  if(Math.round(average) != average)
+				  {
+					  backgroundPixels[r][c].setGreen(backgroundPixels[r][c].getGreen() + delta);
+				  }
+			  }
+		  }
+	  }
   }
   
   
