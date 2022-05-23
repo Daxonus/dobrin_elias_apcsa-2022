@@ -4,7 +4,7 @@
  * methods.  Uncomment the methods and the code
  * in the main to test.
  * 
- * @author Barbara Ericson 
+ * @author Elias Dobrin 
  */
 public class PictureTester
 {
@@ -185,6 +185,16 @@ public class PictureTester
 	  backgroundPicture.explore();
   }
   
+  public static void testDecode()
+  {
+	  Picture backgroundPicture = new Picture("beach.jpg");
+	  Picture messagePicture = new Picture("msg.jpg");
+	  backgroundPicture.encode(messagePicture);
+	  
+	  Picture decodedPicture = backgroundPicture.decode();
+	  decodedPicture.show();
+  }
+  
   /** Main method for testing.  Every class can have a main
     * method in Java */
   public static void main(String[] args)
@@ -194,6 +204,7 @@ public class PictureTester
     // to run
 	  
 	testEncode();
+	testDecode();
 	  
     // testZeroBlue();
     // testKeepOnlyBlue();
