@@ -11,7 +11,7 @@ import java.util.List; // resolves problem with java.awt.List and java.util.List
  * SimplePicture and allows the student to add functionality to
  * the Picture class.  
  * 
- * @author Barbara Ericson ericson@cc.gatech.edu
+ * @author Elias Dobrin
  */
 public class Picture extends SimplePicture 
 {
@@ -507,6 +507,9 @@ public class Picture extends SimplePicture
   
   public void encode(Picture messagePicture)
   {
+	  Random generator = new Random(7987234);
+	  
+	  
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
@@ -514,8 +517,8 @@ public class Picture extends SimplePicture
 	  {
 		  for(int c = 0; c < this.getWidth(); c++)
 		  {
-			  int row = Math.min(Math.max((int) (Math.random() * this.getHeight()), 0), this.getHeight() - 1);
-			  int col = Math.min(Math.max((int) (Math.random() * this.getWidth()), 0), this.getWidth() - 1);
+			  int row = generator.nextInt(0, this.getHeight());
+			  int col = generator.nextInt(0, this.getWidth());
 			  
 			  int[] temp = {messagePixels[r][c].getRed(), messagePixels[r][c].getGreen(), messagePixels[r][c].getBlue()};
 			  messagePixels[r][c].setRed(messagePixels[row][col].getRed());
