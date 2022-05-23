@@ -600,11 +600,39 @@ public class Picture extends SimplePicture
 	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
+	  
+	  
+	  Picture messageRandomPicture = new Picture(this.getHeight(), this.getWidth());
+	  Pixel[][] messageRandomPixels = messageRandomPicture.getPixels2D();
+	  
+	  for(int r = 0; r < this.getHeight(); r++)
+	  {
+		  for(int c = 0; c < this.getWidth(); c++)
+		  {
+			  double average = backgroundPixels[r][c].getAverage();
+			  
+			  if(Math.round(average) == average)
+			  {
+				  messageRandomPixels[r][c].setRed(255);
+				  messageRandomPixels[r][c].setGreen(255);
+				  messageRandomPixels[r][c].setBlue(255);
+			  }
+			  
+			  else
+			  {
+				  messageRandomPixels[r][c].setRed(0);
+				  messageRandomPixels[r][c].setGreen(0);
+				  messageRandomPixels[r][c].setBlue(0);
+			  }
+		  }
+	  }
+	  
 	  ArrayList<Integer> randomsBackwards = new ArrayList<Integer>();
 	  
 	  for(int n = 0; n < this.getHeight() * this.getWidth(); n++)
 	  {
 		  randomsBackwards.add(generator.nextInt(0, this.getWidth()));
+		  randomsBackwards.add(generator.nextInt(0, this.getHeight()));
 	  }
 	  
 	  Collections.reverse(randomsBackwards);
@@ -618,8 +646,19 @@ public class Picture extends SimplePicture
 			  counter--;
 			  int row = randomsBackwards.remove(counter);
 			  counter--;
+			  
+			  int[] temp = {messageRandomPixels[r][c].getRed(), messageRandomPixels[r][c].getGreen(), messageRandomPixels[r][c].getBlue()};
+			  messageRandomPixels[r][c].setRed(messageRandomPixels[row][col].getRed());
+			  messageRandomPixels[r][c].setGreen(messageRandomPixels[row][col].getGreen());
+			  messageRandomPixels[r][c].setBlue(messageRandomPixels[row][col].getBlue());
+			  
+			  messageRandomPixels[row][col].setRed(temp[0]);
+			  messageRandomPixels[row][col].setGreen(temp[1]);
+			  messageRandomPixels[row][col].setBlue(temp[2]);
 		  }
 	  }
+	  
+	  return messageRandomPicture;
   }
   
   
