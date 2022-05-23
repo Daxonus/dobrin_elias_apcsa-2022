@@ -498,6 +498,40 @@ public class Picture extends SimplePicture
     }
   }
   
+  
+  
+  
+  
+  
+  
+  
+  public void encode(Picture messagePicture)
+  {
+	  Pixel[][] messagePixels = messagePicture.getPixels2D();
+	  Pixel[][] backgroundPixels = this.getPixels2D();
+	  
+	  for(int r = 0; r < this.getHeight(); r++)
+	  {
+		  for(int c = 0; c < this.getWidth(); c++)
+		  {
+			  int row = Math.min(Math.max((int) (Math.random() * this.getHeight()), 0), this.getHeight() - 1);
+			  int col = Math.min(Math.max((int) (Math.random() * this.getWidth()), 0), this.getWidth() - 1);
+			  
+			  int[] temp = {messagePixels[r][c].getRed(), messagePixels[r][c].getGreen(), messagePixels[r][c].getBlue()};
+			  messagePixels[r][c].setRed(messagePixels[row][col].getRed());
+			  messagePixels[r][c].setGreen(messagePixels[row][col].getGreen());
+			  messagePixels[r][c].setBlue(messagePixels[row][col].getBlue());
+			  
+			  messagePixels[row][col].setRed(temp[0]);
+			  messagePixels[row][col].setGreen(temp[1]);
+			  messagePixels[row][col].setBlue(temp[2]);
+		  }
+	  }
+  }
+  
+  
+  
+  
   /* Main method for testing - each class in Java can have a main 
    * method 
    */
