@@ -507,27 +507,26 @@ public class Picture extends SimplePicture
   
   public void encode(Picture messagePicture)
   {
-	  Random generator = new Random(7987234);
+	  Random generator = new Random(0);
 	  
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
-	  for(int r = 0; r < this.getHeight(); r++)
+	  for(int n = 0; n < 1000; n++)
 	  {
-		  for(int c = 0; c < this.getWidth(); c++)
-		  {
-			  int row = generator.nextInt(0, this.getHeight());
-			  int col = generator.nextInt(0, this.getWidth());
-			  
-			  int[] temp = {messagePixels[r][c].getRed(), messagePixels[r][c].getGreen(), messagePixels[r][c].getBlue()};
-			  messagePixels[r][c].setRed(messagePixels[row][col].getRed());
-			  messagePixels[r][c].setGreen(messagePixels[row][col].getGreen());
-			  messagePixels[r][c].setBlue(messagePixels[row][col].getBlue());
-			  
-			  messagePixels[row][col].setRed(temp[0]);
-			  messagePixels[row][col].setGreen(temp[1]);
-			  messagePixels[row][col].setBlue(temp[2]);
-		  }
+		  int r1 = generator.nextInt(0, this.getHeight());
+		  int c1 = generator.nextInt(0, this.getWidth());
+		  int r2 = generator.nextInt(0, this.getHeight());
+		  int c2 = generator.nextInt(0, this.getWidth());
+		  
+		  int[] temp = {messagePixels[r1][c1].getRed(), messagePixels[r1][c1].getGreen(), messagePixels[r1][c1].getBlue()};
+		  messagePixels[r1][c1].setRed(messagePixels[r2][c2].getRed());
+		  messagePixels[r1][c1].setGreen(messagePixels[r2][c2].getGreen());
+		  messagePixels[r1][c1].setBlue(messagePixels[r2][c2].getBlue());
+		  
+		  messagePixels[r2][c2].setRed(temp[0]);
+		  messagePixels[r2][c2].setGreen(temp[1]);
+		  messagePixels[r2][c2].setBlue(temp[2]);
 	  }
 	  
 	  for(int r = 0; r < this.getHeight(); r++)
@@ -596,7 +595,7 @@ public class Picture extends SimplePicture
   
   public Picture decode()
   {
-	  Random generator = new Random(7987234);
+	  Random generator = new Random(0);
 	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
@@ -629,33 +628,33 @@ public class Picture extends SimplePicture
 	  
 	  ArrayList<Integer> randomsBackwards = new ArrayList<Integer>();
 	  
-	  for(int n = 0; n < this.getHeight() * this.getWidth(); n++)
+	  for(int n = 0; n < 1000 * 4; n++)
 	  {
+		  randomsBackwards.add(generator.nextInt(0, this.getHeight()));
 		  randomsBackwards.add(generator.nextInt(0, this.getWidth()));
 		  randomsBackwards.add(generator.nextInt(0, this.getHeight()));
+		  randomsBackwards.add(generator.nextInt(0, this.getWidth()));
 	  }
 	  
-	  Collections.reverse(randomsBackwards);
-	  int counter = randomsBackwards.size() - 1;
 	  
-	  for(int r = this.getHeight() - 1; r >= 0; r--)
+	  int counter = randomsBackwards.size();
+	  
+	  for(int n = 0; n < randomsBackwards.size() / 4; n++)
 	  {
-		  for(int c = this.getWidth() - 1; c >= 0; c--)
-		  {
-			  int col = randomsBackwards.remove(counter);
-			  counter--;
-			  int row = randomsBackwards.remove(counter);
-			  counter--;
-			  
-			  int[] temp = {messageRandomPixels[r][c].getRed(), messageRandomPixels[r][c].getGreen(), messageRandomPixels[r][c].getBlue()};
-			  messageRandomPixels[r][c].setRed(messageRandomPixels[row][col].getRed());
-			  messageRandomPixels[r][c].setGreen(messageRandomPixels[row][col].getGreen());
-			  messageRandomPixels[r][c].setBlue(messageRandomPixels[row][col].getBlue());
-			  
-			  messageRandomPixels[row][col].setRed(temp[0]);
-			  messageRandomPixels[row][col].setGreen(temp[1]);
-			  messageRandomPixels[row][col].setBlue(temp[2]);
-		  }
+		  int r1 = randomsBackwards.get(counter - 4);
+		  int c1 = randomsBackwards.get(counter - 3);
+		  int r2 = randomsBackwards.get(counter - 2);
+		  int c2 = randomsBackwards.get(counter - 1);
+		  counter -= 4;
+		  
+		  int[] temp = {messageRandomPixels[r1][c1].getRed(), messageRandomPixels[r1][c1].getGreen(), messageRandomPixels[r1][c1].getBlue()};
+		  messageRandomPixels[r1][c1].setRed(messageRandomPixels[r2][c2].getRed());
+		  messageRandomPixels[r1][c1].setGreen(messageRandomPixels[r2][c2].getGreen());
+		  messageRandomPixels[r1][c1].setBlue(messageRandomPixels[r2][c2].getBlue());
+		  
+		  messageRandomPixels[r2][c2].setRed(temp[0]);
+		  messageRandomPixels[r2][c2].setGreen(temp[1]);
+		  messageRandomPixels[r2][c2].setBlue(temp[2]);
 	  }
 	  
 	  return messageRandomPicture;
