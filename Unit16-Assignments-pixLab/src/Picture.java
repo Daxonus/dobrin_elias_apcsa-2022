@@ -507,11 +507,43 @@ public class Picture extends SimplePicture
   
   public void encode(Picture messagePicture)
   {
-	  Random generator = new Random(0);
 	  
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
+	  for(int r = 0; r < this.getHeight(); r++)
+	  {
+		  for(int i = 0; i < 5 * (1 + Math.sin(20 * 2 * Math.PI * r / this.getHeight())); i++)
+		  {
+			  for(int c = 0; c < this.getWidth(); c++)
+			  {
+				  int rt = r;
+				  int ct = c + 1;
+				  
+				  if(ct < 0)
+				  {
+					  ct += this.getWidth();
+				  }
+				  
+				  if(ct >= this.getWidth())
+				  {
+					  ct -= this.getWidth();
+				  }
+				  
+				  int[] temp = {messagePixels[r][c].getRed(), messagePixels[r][c].getGreen(), messagePixels[r][c].getBlue()};
+				  messagePixels[r][c].setRed(messagePixels[rt][ct].getRed());
+				  messagePixels[r][c].setGreen(messagePixels[rt][ct].getGreen());
+				  messagePixels[r][c].setBlue(messagePixels[rt][ct].getBlue());
+
+				  messagePixels[rt][ct].setRed(temp[0]);
+				  messagePixels[rt][ct].setGreen(temp[1]);
+				  messagePixels[rt][ct].setBlue(temp[2]);
+			  }
+		  }
+	  }
+	  
+	  
+	  Random generator = new Random(234089);
 	  for(int n = 0; n < 1000; n++)
 	  {
 		  int r1 = generator.nextInt(0, this.getHeight());
@@ -595,7 +627,7 @@ public class Picture extends SimplePicture
   
   public Picture decode()
   {
-	  Random generator = new Random(0);
+	  Random generator = new Random(234089);
 	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
