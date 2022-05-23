@@ -544,12 +544,15 @@ public class Picture extends SimplePicture
 	  
 	  
 	  Random generator = new Random(234089);
-	  for(int n = 0; n < 1000; n++)
+	  for(int n = 0; n < 100000; n++)
 	  {
 		  int r1 = generator.nextInt(0, this.getHeight());
 		  int c1 = generator.nextInt(0, this.getWidth());
-		  int r2 = generator.nextInt(0, this.getHeight());
-		  int c2 = generator.nextInt(0, this.getWidth());
+		  int r2 = Math.min(Math.max(r1 + generator.nextInt(-2, 2 + 1), 0), this.getHeight() - 1);
+		  int c2 = Math.min(Math.max(c1 + generator.nextInt(-2, 2 + 1), 0), this.getWidth() - 1);
+		  
+		  //int r2 = generator.nextInt(0, this.getHeight());
+		  // int c2 = generator.nextInt(0, this.getWidth());
 		  
 		  int[] temp = {messagePixels[r1][c1].getRed(), messagePixels[r1][c1].getGreen(), messagePixels[r1][c1].getBlue()};
 		  messagePixels[r1][c1].setRed(messagePixels[r2][c2].getRed());
@@ -627,11 +630,8 @@ public class Picture extends SimplePicture
   
   public Picture decode()
   {
-	  Random generator = new Random(234089);
 	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] backgroundPixels = this.getPixels2D();
-	  
-	  
 	  
 	  Picture messageRandomPicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] messageRandomPixels = messageRandomPicture.getPixels2D();
@@ -656,37 +656,6 @@ public class Picture extends SimplePicture
 				  messageRandomPixels[r][c].setBlue(0);
 			  }
 		  }
-	  }
-	  
-	  ArrayList<Integer> randomsBackwards = new ArrayList<Integer>();
-	  
-	  for(int n = 0; n < 1000 * 4; n++)
-	  {
-		  randomsBackwards.add(generator.nextInt(0, this.getHeight()));
-		  randomsBackwards.add(generator.nextInt(0, this.getWidth()));
-		  randomsBackwards.add(generator.nextInt(0, this.getHeight()));
-		  randomsBackwards.add(generator.nextInt(0, this.getWidth()));
-	  }
-	  
-	  
-	  int counter = randomsBackwards.size();
-	  
-	  for(int n = 0; n < randomsBackwards.size() / 4; n++)
-	  {
-		  int r1 = randomsBackwards.get(counter - 4);
-		  int c1 = randomsBackwards.get(counter - 3);
-		  int r2 = randomsBackwards.get(counter - 2);
-		  int c2 = randomsBackwards.get(counter - 1);
-		  counter -= 4;
-		  
-		  int[] temp = {messageRandomPixels[r1][c1].getRed(), messageRandomPixels[r1][c1].getGreen(), messageRandomPixels[r1][c1].getBlue()};
-		  messageRandomPixels[r1][c1].setRed(messageRandomPixels[r2][c2].getRed());
-		  messageRandomPixels[r1][c1].setGreen(messageRandomPixels[r2][c2].getGreen());
-		  messageRandomPixels[r1][c1].setBlue(messageRandomPixels[r2][c2].getBlue());
-		  
-		  messageRandomPixels[r2][c2].setRed(temp[0]);
-		  messageRandomPixels[r2][c2].setGreen(temp[1]);
-		  messageRandomPixels[r2][c2].setBlue(temp[2]);
 	  }
 	  
 	  return messageRandomPicture;
