@@ -509,7 +509,6 @@ public class Picture extends SimplePicture
   {
 	  Random generator = new Random(7987234);
 	  
-	  
 	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  Pixel[][] backgroundPixels = this.getPixels2D();
 	  
@@ -595,7 +594,33 @@ public class Picture extends SimplePicture
 	  }
   }
   
-  
+  public Picture decode()
+  {
+	  Random generator = new Random(7987234);
+	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
+	  Pixel[][] backgroundPixels = this.getPixels2D();
+	  
+	  ArrayList<Integer> randomsBackwards = new ArrayList<Integer>();
+	  
+	  for(int n = 0; n < this.getHeight() * this.getWidth(); n++)
+	  {
+		  randomsBackwards.add(generator.nextInt(0, this.getWidth()));
+	  }
+	  
+	  Collections.reverse(randomsBackwards);
+	  int counter = randomsBackwards.size() - 1;
+	  
+	  for(int r = this.getHeight() - 1; r >= 0; r--)
+	  {
+		  for(int c = this.getWidth() - 1; c >= 0; c--)
+		  {
+			  int col = randomsBackwards.remove(counter);
+			  counter--;
+			  int row = randomsBackwards.remove(counter);
+			  counter--;
+		  }
+	  }
+  }
   
   
   /* Main method for testing - each class in Java can have a main 
