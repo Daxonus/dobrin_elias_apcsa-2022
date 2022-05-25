@@ -669,13 +669,11 @@ public class Picture extends SimplePicture
 	  }
   }
   
-  public void decode()
+  public Picture decode()
   {
 	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
+	  Pixel[][] messagePixels = messagePicture.getPixels2D();
 	  Pixel[][] backgroundPixels = this.getPixels2D();
-	  
-	  Picture messageRandomPicture = new Picture(this.getHeight(), this.getWidth());
-	  Pixel[][] messageRandomPixels = messageRandomPicture.getPixels2D();
 	  
 	  // check if black or white pixel based on if average of colors is roundable up or down
 	  for(int r = 0; r < this.getHeight(); r++)
@@ -686,21 +684,22 @@ public class Picture extends SimplePicture
 			  
 			  if(Math.round(average) == average)
 			  {
-				  backgroundPixels[r][c].setRed(255);
-				  backgroundPixels[r][c].setGreen(255);
-				  backgroundPixels[r][c].setBlue(255);
+				  messagePixels[r][c].setRed(255);
+				  messagePixels[r][c].setGreen(255);
+				  messagePixels[r][c].setBlue(255);
 			  }
 			  
 			  else
 			  {
-				  backgroundPixels[r][c].setRed(0);
-				  backgroundPixels[r][c].setGreen(0);
-				  backgroundPixels[r][c].setBlue(0);
+				  messagePixels[r][c].setRed(0);
+				  messagePixels[r][c].setGreen(0);
+				  messagePixels[r][c].setBlue(0);
 			  }
 		  }
 	  }
 	  
 	  // left with a noisy but readable text image
+	  return messagePicture;
   }
   
   

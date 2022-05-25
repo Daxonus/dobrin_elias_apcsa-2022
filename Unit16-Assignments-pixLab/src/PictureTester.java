@@ -190,8 +190,7 @@ public class PictureTester
 	  Picture backgroundPicture = new Picture("beach.jpg");
 	  Picture messagePicture = new Picture("msg.jpg");
 	  backgroundPicture.encode(messagePicture);
-	  backgroundPicture.decode();
-	  backgroundPicture.explore();
+	  backgroundPicture.decode().explore();
   }
   
   public static void testEncodeSave()
@@ -209,12 +208,10 @@ public class PictureTester
   
   public static void testDecodeSaved()
   {
-	  Picture decodedPicture1 = new Picture("stegano_msg.png");
-	  decodedPicture1.decode();
+	  Picture decodedPicture1 = new Picture("stegano_msg.png").decode();
 	  decodedPicture1.explore();
 	  
-	  Picture decodedPicture2 = new Picture("stegano_apple_icon.png");
-	  decodedPicture2.decode();
+	  Picture decodedPicture2 = new Picture("stegano_apple_icon.png").decode();
 	  decodedPicture2.explore();
   }
   
