@@ -190,8 +190,32 @@ public class PictureTester
 	  Picture backgroundPicture = new Picture("beach.jpg");
 	  Picture messagePicture = new Picture("msg.jpg");
 	  backgroundPicture.encode(messagePicture);
-	  Picture decodedPicture = backgroundPicture.decode();
-	  decodedPicture.explore();
+	  backgroundPicture.decode();
+	  backgroundPicture.explore();
+  }
+  
+  public static void testEncodeSave()
+  {
+	  Picture backgroundPicture1 = new Picture("beach.jpg");
+	  Picture messagePicture1 = new Picture("msg.jpg");
+	  backgroundPicture1.encode(messagePicture1);
+	  backgroundPicture1.write("stegano_msg.png");
+	  
+	  Picture backgroundPicture2 = new Picture("beach.jpg");
+	  Picture messagePicture2 = new Picture("apple_icon.jpg");
+	  backgroundPicture2.encode(messagePicture2);
+	  backgroundPicture2.write("stegano_apple_icon.png");
+  }
+  
+  public static void testDecodeSaved()
+  {
+	  Picture decodedPicture1 = new Picture("stegano_msg.png");
+	  decodedPicture1.decode();
+	  decodedPicture1.explore();
+	  
+	  Picture decodedPicture2 = new Picture("stegano_apple_icon.png");
+	  decodedPicture2.decode();
+	  decodedPicture2.explore();
   }
   
   /** Main method for testing.  Every class can have a main
@@ -203,7 +227,9 @@ public class PictureTester
     // to run
 	  
 	// testEncode();
-	testDecode();
+	// testDecode();
+	testEncodeSave();
+	testDecodeSaved();
 	  
     // testZeroBlue();
     // testKeepOnlyBlue();

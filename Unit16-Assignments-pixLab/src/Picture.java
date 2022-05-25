@@ -669,7 +669,7 @@ public class Picture extends SimplePicture
 	  }
   }
   
-  public Picture decode()
+  public void decode()
   {
 	  Picture messagePicture = new Picture(this.getHeight(), this.getWidth());
 	  Pixel[][] backgroundPixels = this.getPixels2D();
@@ -686,22 +686,21 @@ public class Picture extends SimplePicture
 			  
 			  if(Math.round(average) == average)
 			  {
-				  messageRandomPixels[r][c].setRed(255);
-				  messageRandomPixels[r][c].setGreen(255);
-				  messageRandomPixels[r][c].setBlue(255);
+				  backgroundPixels[r][c].setRed(255);
+				  backgroundPixels[r][c].setGreen(255);
+				  backgroundPixels[r][c].setBlue(255);
 			  }
 			  
 			  else
 			  {
-				  messageRandomPixels[r][c].setRed(0);
-				  messageRandomPixels[r][c].setGreen(0);
-				  messageRandomPixels[r][c].setBlue(0);
+				  backgroundPixels[r][c].setRed(0);
+				  backgroundPixels[r][c].setGreen(0);
+				  backgroundPixels[r][c].setBlue(0);
 			  }
 		  }
 	  }
 	  
 	  // left with a noisy but readable text image
-	  return messageRandomPicture;
   }
   
   
