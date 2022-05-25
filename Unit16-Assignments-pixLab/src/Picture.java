@@ -514,7 +514,7 @@ public class Picture extends SimplePicture
 	  // shift the message picture by a sine curve
 	  for(int r = 0; r < this.getHeight(); r++)
 	  {
-		  for(int i = 0; i < 5 * (1 + Math.sin(20 * 2 * Math.PI * r / this.getHeight())); i++)
+		  for(int i = 0; i < 5 * (1 + Math.sin(10 * 2 * Math.PI * r / this.getHeight())); i++)
 		  {
 			  for(int c = 0; c < this.getWidth(); c++)
 			  {
