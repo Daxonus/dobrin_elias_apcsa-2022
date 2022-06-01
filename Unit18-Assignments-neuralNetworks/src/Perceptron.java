@@ -24,7 +24,7 @@ public class Perceptron {
 		System.out.print("Initial bias: " + this.bias + "\n");
 		System.out.print("Threshold: " + this.threshold + "\n");
 		System.out.print("Learning rate: " + this.learningRate + "\n");
-		
-		
 	}
+	
+	public boolean predict()
 }
