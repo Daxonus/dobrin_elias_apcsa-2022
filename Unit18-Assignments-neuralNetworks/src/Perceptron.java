@@ -1,11 +1,11 @@
 
 public class Perceptron {
-	private double threshold;
+	private int threshold;
 	private double learningRate;
 	private double[] weights;
 	private double bias;
 	
-	public Perceptron(int numberInputs, double threshold, double learningRate)
+	public Perceptron(int numberInputs, int threshold, double learningRate)
 	{
 		this.threshold = threshold;
 		this.learningRate = learningRate;
@@ -26,7 +26,7 @@ public class Perceptron {
 		System.out.print("Learning rate: " + this.learningRate + "\n");
 	}
 	
-	public boolean predict(int[] inputs)
+	public int predict(int[] inputs)
 	{
 		double z = this.bias;
 		
@@ -50,5 +50,34 @@ public class Perceptron {
 		}
 		
 		return activation;
+	}
+	
+	public void train(int[][] trainingInputs, int[] labels)
+	{
+		for(int i = 0; i < this.threshold; i++)
+		{
+			System.out.println("----- Training Iteration: " + i + " -----");
+			
+			for(int n = 0; n < labels.length; n++)
+			{
+				int[] inputs = trainingInputs[n];
+				int label = labels[n];
+				System.out.println("Current inputs, weights, bias: " + inputs + " " + this.weights + " " + this.bias);
+				int yhat = this.predict(inputs);
+				System.out.println("Activation(yhat) = " + yhat);
+				int error = label - yhat;
+				System.out.println("Error = " + label + " - " + yhat + " = " + error);
+				
+				for(int k = 0; k < inputs.length; k++)
+				{
+					this.weights[k] += this.learningRate * error * inputs[k];
+				}
+				
+				this.bias += this.learningRate * error;
+				System.out.println("Updated Weights: " + this.weights);
+				System.out.println("Updated Bias: " + this.bias);
+				System.out.println();
+			}
+		}
 	}
 }
