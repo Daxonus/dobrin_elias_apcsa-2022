@@ -15,11 +15,7 @@ public class Perceptron {
 			this.weights[n] = 0.0;
 		}
 		this.bias = 0.0;
-		System.out.print("Initial weights: ");
-		for(int n = 0; n < numberInputs; n++)
-		{
-			System.out.print("" + this.weights[n] + " ");
-		}
+		System.out.print("Initial weights: " + arrayToString(this.weights));
 		System.out.print("\n");
 		System.out.print("Initial bias: " + this.bias + "\n");
 		System.out.print("Threshold: " + this.threshold + "\n");
@@ -62,7 +58,7 @@ public class Perceptron {
 			{
 				int[] inputs = trainingInputs[n];
 				int label = labels[n];
-				System.out.println("Current inputs, weights, bias: " + inputs + " " + this.weights + " " + this.bias);
+				System.out.println("Current inputs, weights, bias: " + arrayToString(inputs) + " " + arrayToString(this.weights) + " " + this.bias);
 				int yhat = this.predict(inputs);
 				System.out.println("Activation(yhat) = " + yhat);
 				int error = label - yhat;
@@ -74,7 +70,7 @@ public class Perceptron {
 				}
 				
 				this.bias += this.learningRate * error;
-				System.out.println("Updated Weights: " + this.weights);
+				System.out.println("Updated Weights: " + arrayToString(this.weights));
 				System.out.println("Updated Bias: " + this.bias);
 				System.out.println();
 			}
@@ -82,6 +78,25 @@ public class Perceptron {
 	}
 	
 	public static String arrayToString(int[] array)
+	{
+		if(array.length == 0)
+		{
+			return "[]";
+		}
+		
+		String result = "[" + array[0];
+		
+		for(int n = 0; n < array.length; n++)
+		{
+			result += ", " + array[n];
+		}
+		
+		result += "]";
+		
+		return result;
+	}
+	
+	public static String arrayToString(double[] array)
 	{
 		if(array.length == 0)
 		{

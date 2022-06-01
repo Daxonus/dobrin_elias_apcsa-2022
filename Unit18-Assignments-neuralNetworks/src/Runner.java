@@ -25,7 +25,7 @@ public class Runner {
 		int[] inputs = new int[2];
 		inputs[0] = a;
 		inputs[1] = b;
-		System.out.print("----- Input -----" + inputs + "\n");
+		System.out.print("----- Input -----" + Perceptron.arrayToString(inputs) + "\n");
 		int output = perceptron.predict(inputs);
 		System.out.print("----- Output -----" + output + "\n");
 	}
