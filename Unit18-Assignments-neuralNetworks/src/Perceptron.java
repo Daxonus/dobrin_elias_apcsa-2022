@@ -26,5 +26,29 @@ public class Perceptron {
 		System.out.print("Learning rate: " + this.learningRate + "\n");
 	}
 	
-	public boolean predict()
+	public boolean predict(int[] inputs)
+	{
+		double z = this.bias;
+		
+		for(int n = 0; n < this.weights.length; n++)
+		{
+			z += inputs[n] * this.weights[n];
+		}
+		
+		System.out.println("z = " + inputs[0] + " * " + this.weights[0] + " + " + inputs[1] + " * " + this.weights[1] + " = " + z);
+		
+		int activation;
+		
+		if(z > 0)
+		{
+			activation = 1;
+		}
+		
+		else
+		{
+			activation = 0;
+		}
+		
+		return activation;
+	}
 }
