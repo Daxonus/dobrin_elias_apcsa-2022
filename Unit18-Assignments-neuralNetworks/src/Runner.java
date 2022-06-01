@@ -18,7 +18,7 @@ public class Runner {
 		labels[0] = 0;
 		labels[0] = 0;
 		
-		Perceptron perceptron = new Perceptron(2, 10.0, 1.0);
+		Perceptron perceptron = new Perceptron(2, 10, 1.0);
 		perceptron.train(inputMatrix, labels);
 		int a = 1;
 		int b = 1;
@@ -26,7 +26,7 @@ public class Runner {
 		inputs[0] = a;
 		inputs[1] = b;
 		System.out.print("----- Input -----" + inputs + "\n");
-		output = perceptron.predict(inputs);
+		int output = perceptron.predict(inputs);
 		System.out.print("----- Output -----" + output + "\n");
 	}
 }

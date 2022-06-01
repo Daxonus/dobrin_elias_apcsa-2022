@@ -80,4 +80,23 @@ public class Perceptron {
 			}
 		}
 	}
+	
+	public static String arrayToString(int[] array)
+	{
+		if(array.length == 0)
+		{
+			return "[]";
+		}
+		
+		String result = "[" + array[0];
+		
+		for(int n = 0; n < array.length; n++)
+		{
+			result += ", " + array[n];
+		}
+		
+		result += "]";
+		
+		return result;
+	}
 }
